@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星空体育 — 日常查询与对照指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f5f0eb;
+            font-family: "Georgia", "Noto Serif SC", "Times New Roman", serif;
+            color: #2d2a27;
+            line-height: 1.7;
+            padding: 2rem 1.2rem;
+            max-width: 920px;
+            margin: 0 auto;
+        }
+
+        /* 主视觉区域 — 文章式引子 */
+        .hero {
+            margin-bottom: 3.5rem;
+            border-bottom: 1px solid #d9d2cb;
+            padding-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            color: #302a24;
+            margin-bottom: 0.3rem;
+        }
+
+        .hero .sub {
+            font-size: 1rem;
+            color: #7a7068;
+            font-style: italic;
+            margin-top: 0.2rem;
+            border-left: 3px solid #c2b6ab;
+            padding-left: 1rem;
+        }
+
+        .hero p {
+            margin-top: 1.2rem;
+            font-size: 1.1rem;
+        }
+
+        /* 卡片网格 — 信息卡片式 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem 1.8rem;
+            margin: 3rem 0;
+        }
+
+        @media (max-width: 600px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+                gap: 1.8rem;
+            }
+        }
+
+        .card {
+            background: #fcf9f6;
+            padding: 1.8rem 1.6rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03), 0 0 0 1px #e5ddd5;
+            transition: box-shadow 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.05), 0 0 0 1px #d1c7bc;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 450;
+            margin-bottom: 0.8rem;
+            color: #3d352f;
+            border-bottom: 1px dashed #d9d0c8;
+            padding-bottom: 0.4rem;
+        }
+
+        .card p {
+            font-size: 1rem;
+            color: #44403b;
+        }
+
+        .card .meta-tag {
+            display: inline-block;
+            background: #ede7e0;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #5f554b;
+            margin-top: 0.6rem;
+        }
+
+        /* 引用块 / 提示框 */
+        .pull-quote {
+            background: #f2ece5;
+            padding: 1.6rem 2rem;
+            border-radius: 20px 4px 20px 4px;
+            margin: 2.8rem 0;
+            font-size: 1.05rem;
+            color: #3c3530;
+            border-left: 4px solid #b3a598;
+            position: relative;
+        }
+
+        .pull-quote::before {
+            content: "☁";
+            font-size: 1.6rem;
+            position: absolute;
+            top: 0.2rem;
+            left: 0.6rem;
+            opacity: 0.2;
+        }
+
+        .pull-quote strong {
+            font-weight: 500;
+            color: #2f2822;
+        }
+
+        /* 自然链接段落 */
+        .link-paragraph {
+            background: #f8f4ef;
+            padding: 1.6rem 2rem;
+            border-radius: 10px;
+            margin: 2rem 0 2.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .link-paragraph a {
+            color: #5a4d40;
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 3px;
+            transition: color 0.15s;
+        }
+
+        .link-paragraph a:hover {
+            color: #2f241c;
+            text-decoration-thickness: 2px;
+        }
+
+        /* 适合人群 — 简表风格 */
+        .audience-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 1.2rem;
+            margin: 1.5rem 0 1rem;
+        }
+
+        .audience-item {
+            background: #f0e9e2;
+            padding: 0.2rem 1.2rem 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            color: #3f3730;
+            border: 1px solid #ddd3ca;
+        }
+
+        .audience-item::before {
+            content: "·";
+            margin-right: 0.3rem;
+            font-weight: 700;
+            color: #9b8c7e;
+        }
+
+        /* FAQ 摘要区 — 用提示框形式 */
+        .faq-summary {
+            margin: 3rem 0 1.5rem;
+        }
+
+        .faq-summary h2 {
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: #342d27;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            border-bottom: 1px dotted #d6cdc4;
+            padding-bottom: 0.8rem;
+        }
+
+        .faq-q {
+            font-weight: 500;
+            color: #3f352e;
+        }
+
+        .faq-a {
+            color: #5d534a;
+            margin-top: 0.2rem;
+            font-size: 0.98rem;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #dbd2c9;
+            margin: 2.5rem 0 1rem;
+        }
+
+        .footer-note {
+            text-align: center;
+            color: #8e8379;
+            font-size: 0.9rem;
+            margin-top: 3rem;
+            border-top: 1px solid #ddd6ce;
+            padding-top: 1.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 主视觉：文章式引子 -->
+    <div class="hero">
+        <h1>星空体育 · 日常查询与对照</h1>
+        <div class="sub">一篇笔记，而非推广</div>
+        <p>
+            信息流里常常出现某个赛事、队伍或比分，这时候手边最好有一个可以随手翻看、对照的地方。
+            谈不上深入研究，更多是一种日常检索与延伸阅读的习惯。
+            本文从使用场景、功能卡片和适用人群几个角度，整理关于 <a href="https://app2-starsports.com" style="color:#4b4038;">星空体育</a> 的一些观察。
+        </p>
+    </div>
+
+    <!-- 用途卡片：信息卡片式网格 -->
+    <div class="card-grid">
+        <div class="card">
+            <h3>📋 实时对照</h3>
+            <p>比赛进行时，比分、队伍数据、近况列表——这些信息更适合以卡片形式并排展示。不用来回切换页面，适合一边看直播一边做简单参照。</p>
+            <span class="meta-tag">场景：边看边查</span>
+        </div>
+        <div class="card">
+            <h3>📚 延伸阅读</h3>
+            <p>某一支球队的历史交锋记录、赛季走势、核心球员变动……这些内容往往散落在不同地方。聚合在一个页面里，比单独搜索更有效率。</p>
+            <span class="meta-tag">场景：赛前准备</span>
+        </div>
+        <div class="card">
+            <h3>📎 笔记式收藏</h3>
+            <p>看到有意思的战术分析或数据盘点，随手做个书签或摘录。信息卡片的形式天然适合做个人对照库，比杂乱截图更清爽。</p>
+            <span class="meta-tag">用途：整理</span>
+        </div>
+        <div class="card">
+            <h3>🔍 快速筛选</h3>
+            <p>联赛、杯赛、地区赛事……时间久了容易混淆。按运动项目、赛事阶段或日期做简单筛选，能够减少查找时的时间损耗。</p>
+            <span class="meta-tag">用途：检索</span>
+        </div>
+    </div>
+
+    <!-- 引用块 / 提示框：叙述感 -->
+    <div class="pull-quote">
+        <strong>一个习惯：</strong> 打开 <a href="https://app2-starsports.com" style="color:#4d4036; text-decoration: underline;">星空体育</a> 之前，我通常先确定今天想看的是哪一类信息——是单纯查比分，还是想看看某个队伍的赛季曲线。目的不同，浏览的节奏也不一样。卡片式的布局对这两种情况都还算友好，至少不会一上来就被信息淹没。
+    </div>
+
+    <!-- 适合人群（自然带出） -->
+    <div style="margin: 2.5rem 0 1.2rem;">
+        <h2 style="font-weight: 400; font-size: 1.3rem; color: #342d27; margin-bottom: 0.5rem;">谁可能用得上</h2>
+        <p style="margin-bottom: 0.8rem; color: #4b423c;">谈不上严格的用户画像，只是根据周围人的习惯大致归纳了几类：</p>
+        <div class="audience-list">
+            <span class="audience-item">比赛日随手查比分的观众</span>
+            <span class="audience-item">做赛前笔记的爱好者</span>
+            <span class="audience-item">需要对照历史数据的写作者</span>
+            <span class="audience-item">偶尔关注特定联赛的 casual 用户</span>
+            <span class="audience-item">想整理自己关注列表的收集型</span>
+        </div>
+        <p style="margin-top: 1rem; font-size: 0.98rem; color: #5c534b;">当然，分类只是参考。每个人的使用习惯都不一样，这里只提供一个简单的参照框架。</p>
+    </div>
+
+    <!-- 自然链接段落（嵌入 a 标签） -->
+    <div class="link-paragraph">
+        <p>如果你也习惯在空闲时点开某个体育信息页面随便翻翻，那么 <a href="https://app2-starsports.com">星空体育</a> 可能符合这种「轻量浏览」的节奏。
+        它不像某些门户那样塞满弹窗和自动播放视频，更像一本可以安静翻阅的参考手册——当然，这只是我个人使用后的感受，未必适用于所有人。</p>
+    </div>
+
+    <!-- FAQ 摘要（简短的问答提示） -->
+    <div class="faq-summary">
+        <h2>偶尔会碰到的小问题</h2>
+        <div class="faq-item">
+            <div class="faq-q">Q: 数据更新快吗？</div>
+            <div class="faq-a">常规比赛日基本能做到分钟级更新。如果是关注度较低的小众联赛，可能会有几分钟延迟，但大体够用。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Q: 需要注册才能看吗？</div>
+            <div class="faq-a">基础查询和浏览不需要注册。部分收藏或自定义功能可能需要账号，看个人需求。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Q: 移动端体验怎么样？</div>
+            <div class="faq-a">卡片式布局在手机上会纵向排列，阅读顺序还算自然。横屏时信息密度更高一些。</div>
+        </div>
+        <p style="margin-top: 1.2rem; font-size: 0.95rem; color: #6b6056; font-style: italic;">以上均为个人使用感受，不代表官方说明。</p>
+    </div>
+
+    <hr>
+
+    <div class="footer-note">
+        日常记录 · 非官方页面<br>
+        内容仅代表个人使用视角，与任何机构无关
+    </div>
+
+</body>
+</html>
